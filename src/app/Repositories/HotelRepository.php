@@ -10,16 +10,20 @@ class HotelRepository{
         return Hotel::with('rooms')->get();
     }
 
-    public function store($data){
+    public function store(array $data){
        return Hotel::create(
             $data
         );
     }
 
-    public function update($data, $id){
+    public function update(array $data,int $id){
         $hotel = Hotel::findOrFail($id);
         $hotel->update($data);
         return $hotel;
+    }
+
+    public function show(int $id){
+        return Hotel::findOrFail($id)->load('rooms');;
     }
 
 

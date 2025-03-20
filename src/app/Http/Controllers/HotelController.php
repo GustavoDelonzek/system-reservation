@@ -40,9 +40,9 @@ class HotelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Hotel $hotel)
+    public function show(int $id)
     {
-        //
+        return response()->json($this->hotelService->show($id));
     }
 
     /**
@@ -50,7 +50,7 @@ class HotelController extends Controller
      */
     public function update(HotelUpdateRequest $request, int $id)
     {
-        return $this->hotelService->update($request->validated(), $id);
+        return response()->json($this->hotelService->update($request->validated(), $id));
     }
 
     /**

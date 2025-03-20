@@ -20,7 +20,11 @@ class HotelService{
     public function update($data, $id){
         return $this->hotelRepository->update($data, $id);
     }
-    
+
+    public function show(int $id){
+        return $this->hotelRepository->show($id);
+    }
+
 
 
 
