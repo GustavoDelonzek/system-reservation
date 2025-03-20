@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\HotelStoreRequest;
+use App\Http\Requests\HotelUpdateRequest;
 use App\Models\Hotel;
 use App\Services\HotelService;
 use Illuminate\Http\Request;
@@ -45,19 +46,11 @@ class HotelController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Hotel $hotel)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Hotel $hotel)
+    public function update(HotelUpdateRequest $request, int $id)
     {
-        //
+        return $this->hotelService->update($request->validated(), $id);
     }
 
     /**

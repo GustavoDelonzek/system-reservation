@@ -17,6 +17,11 @@ class HotelService{
         return $this->hotelRepository->store($data);
     }
 
+    public function update($data, $id){
+        return $this->hotelRepository->update($data, $id);
+    }
+    
+
 
 
 }

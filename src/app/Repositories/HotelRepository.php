@@ -16,6 +16,12 @@ class HotelRepository{
         );
     }
 
+    public function update($data, $id){
+        $hotel = Hotel::findOrFail($id);
+        $hotel->update($data);
+        return $hotel;
+    }
+
 
 
 }
