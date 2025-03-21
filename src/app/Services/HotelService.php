@@ -25,6 +25,9 @@ class HotelService{
         return $this->hotelRepository->show($id);
     }
 
+    public function delete(int $id){
+        return $this->hotelRepository->delete($id);
+    }
 
 
 

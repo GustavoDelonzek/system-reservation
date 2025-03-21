@@ -26,6 +26,12 @@ class HotelRepository{
         return Hotel::findOrFail($id)->load('rooms');;
     }
 
+    public function delete(int $id){
+        $hotel = Hotel::findOrFail($id);
+        $hotel->delete();
+        return response(status:204);
+    }
+
 
 
 }

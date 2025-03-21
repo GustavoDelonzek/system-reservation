@@ -56,8 +56,8 @@ class HotelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Hotel $hotel)
+    public function destroy(int $id)
     {
-        //
+        return $this->hotelService->delete($id);
     }
 }
