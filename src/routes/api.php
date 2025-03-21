@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\RoomController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,8 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
-Route::get('/hotels', [HotelController::class, 'index']);
-Route::get('/hotels/{id}', [HotelController::class, 'show']);
-Route::post('/hotels', [HotelController::class, 'store']);
-Route::put('/hotels/{id}', [HotelController::class, 'update']);
-Route::delete('hotels/{id}', [HotelController::class, 'destroy']);
+Route::apiResource('hotels', HotelController::class);
+Route::apiResource('hotels.rooms', RoomController::class)->scoped();
+
+

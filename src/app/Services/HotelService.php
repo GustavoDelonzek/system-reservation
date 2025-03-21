@@ -14,19 +14,19 @@ class HotelService{
     }
 
     public function store($data){
-        return $this->hotelRepository->store($data);
+        return $this->hotelRepository->createHotel($data);
     }
 
     public function update($data, $id){
-        return $this->hotelRepository->update($data, $id);
+        return $this->hotelRepository->updateHotel($data, $id);
     }
 
     public function show(int $id){
-        return $this->hotelRepository->show($id);
+        return $this->hotelRepository->getHotelById($id);
     }
 
     public function delete(int $id){
-        return $this->hotelRepository->delete($id);
+        return $this->hotelRepository->deleteHotel($id);
     }
 
 
