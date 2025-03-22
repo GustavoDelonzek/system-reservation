@@ -7,6 +7,7 @@ use App\Http\Requests\HotelUpdateRequest;
 use App\Models\Hotel;
 use App\Services\HotelService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HotelController extends Controller
 {
@@ -34,7 +35,7 @@ class HotelController extends Controller
     {
         $validated = $request->validated();
 
-        return response()->json($this->hotelService->store($validated), 201);
+        return response()->json($this->hotelService->store($validated, Auth::id()));
     }
 
     /**
@@ -50,7 +51,7 @@ class HotelController extends Controller
      */
     public function update(HotelUpdateRequest $request, int $hotel)
     {
-        return response()->json($this->hotelService->update($request->validated(), $hotel));
+        return response()->json($this->hotelService->update($request->validated(), $hotel, Auth::id()));
     }
 
     /**

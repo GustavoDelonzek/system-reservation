@@ -28,6 +28,10 @@ class UserRepository{
         return User::create($user);
     }
 
+    public function is_admin(int $id){
+        $user = User::findOrFail($id);
+        return $user->role === 'admin';
+    }
 
 
 }
