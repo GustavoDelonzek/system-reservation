@@ -21,8 +21,17 @@ class RoomService{
         $this->hotelRepository->getHotelById($hotel);
 
         $room['hotel_id'] = $hotel;
-        
+
         return $this->roomRepository->createRoom($room);
+    }
+
+    public function availableRooms(int $hotel){
+
+        return $this->roomRepository->getAvailableRooms($hotel);
+    }
+
+    public function show(int $room){
+        return $this->roomRepository->getRoomById($room);
     }
 
 }

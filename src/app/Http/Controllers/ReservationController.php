@@ -3,16 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
+use App\Services\ReservationService;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
 {
+
+    public function __construct(protected ReservationService $reservationService)
+    {
+        //
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return response()->json($this->reservationService->allReservations());
     }
 
     /**

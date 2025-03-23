@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\RoomController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,10 @@ Route::post('/register', [AuthController::class, 'register']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('hotels', HotelController::class);
-    Route::apiResource('hotels.rooms', RoomController::class)->scoped();
+    Route::apiResource('hotels.rooms', RoomController::class)->scoped()->except(['show']);
 });
+
+Route::get('rooms/{room}', [RoomController::class, 'show']);
+
+Route::apiResource('reservations', ReservationController::class);
 

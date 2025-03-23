@@ -16,9 +16,9 @@ class RoomController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(int $hotel)
     {
-        return $this->roomService->allRooms();
+        return response()->json($this->roomService->availableRooms($hotel));
     }
 
     /**
@@ -33,18 +33,11 @@ class RoomController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Room $room)
-    {
-        //
+    public function show(int $room)    {
+        $room = $this->roomService->show($room);
+        return response()->json($room, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Room $room)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
