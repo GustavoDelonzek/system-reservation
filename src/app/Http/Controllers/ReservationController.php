@@ -6,6 +6,7 @@ use App\Http\Requests\ReservationStoreRequest;
 use App\Models\Reservation;
 use App\Services\ReservationService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
@@ -19,7 +20,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        return response()->json($this->reservationService->allReservations());
+        return response()->json($this->reservationService->allReservations(Auth::id()));
     }
 
 
@@ -29,24 +30,18 @@ class ReservationController extends Controller
     public function store(ReservationStoreRequest $request, int $hotel)
     {
         $validated = $request->validated();
-        return response()->json($this->reservationService->store($validated, $hotel));
+        return response()->json($this->reservationService->store($validated, $hotel, Auth::id()));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Reservation $reservation)
+    public function show(int $reservation)
     {
-        //
+        return response()->json($this->reservationService->show($reservation));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Reservation $reservation)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.

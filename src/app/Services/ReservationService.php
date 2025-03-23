@@ -10,16 +10,20 @@ use Illuminate\Support\Facades\Date;
 class ReservationService{
     public function __construct(protected ReservationRepository $reservationRepository, protected HotelRepository $hotelRepository, protected RoomRepository $roomRepository)
     {
-
     }
 
-    public function allReservations(){
-        return $this->reservationRepository->getAllReservations();
+    public function allReservations(int $user){
+        return $this->reservationRepository->getAllReservationsUser($user);
     }
 
-    public function store(array $reservation, int $hotel){
+
+    public function store(array $reservation, int $hotel, int $user){
         if(!$this->hotelRepository->getHotelById($hotel)){
            throw new \Exception('Hotel not found');
+        }
+
+        if($user != $reservation['user_id']){
+            throw new \Exception('User logged not match with reservation user');
         }
 
         if(!$this->reservationRepository->isAvailableRoom($reservation['room_id'], $reservation['check_in_date'], $reservation['check_out_date'])){
@@ -32,5 +36,9 @@ class ReservationService{
 
         return $this->reservationRepository->createReservation($reservation);
 
+    }
+
+    public function show(int $reservation){
+        return $this->reservationRepository->getReservationById($reservation);
     }
 }

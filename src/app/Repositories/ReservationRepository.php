@@ -6,8 +6,8 @@ use App\Models\Reservation;
 use Illuminate\Support\Facades\Date;
 
 class ReservationRepository{
-    public function getAllReservations(){
-        return Reservation::all();
+    public function getAllReservationsUser(int $user){
+        return Reservation::where('user_id', $user)->get();
     }
 
     public function getReservationById(int $id){

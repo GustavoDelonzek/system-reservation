@@ -28,9 +28,10 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('hotels', HotelController::class);
     Route::apiResource('hotels.rooms', RoomController::class)->scoped()->except(['show']);
+    Route::apiResource('hotels.reservations', ReservationController::class)->scoped()->except(['show', 'destroy', 'update']);
 });
 
+Route::get('reservations/{reservation}', [ReservationController::class, 'show']);
 Route::get('rooms/{room}', [RoomController::class, 'show']);
 
-Route::apiResource('hotels.reservations', ReservationController::class)->scoped();
 
