@@ -32,5 +32,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::get('rooms/{room}', [RoomController::class, 'show']);
 
-Route::apiResource('reservations', ReservationController::class);
+Route::apiResource('hotels.reservations', ReservationController::class)->scoped();
 

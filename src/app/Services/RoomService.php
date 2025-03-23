@@ -27,7 +27,7 @@ class RoomService{
 
     public function availableRooms(int $hotel){
 
-        return $this->roomRepository->getAvailableRooms($hotel);
+        return $this->roomRepository->getRoomByHotel($hotel);
     }
 
     public function show(int $room){

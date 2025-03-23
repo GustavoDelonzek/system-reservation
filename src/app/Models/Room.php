@@ -15,7 +15,6 @@ class Room extends Model
         'hotel_id',
         'room_type',
         'price_per_night',
-        'availability_status',
     ];
 
     public function hotel(): BelongsTo
@@ -27,5 +26,5 @@ class Room extends Model
     {
         return $this->hasMany(Reservation::class);
     }
-    
+
 }

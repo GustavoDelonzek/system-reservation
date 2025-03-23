@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReservationStoreRequest;
 use App\Models\Reservation;
 use App\Services\ReservationService;
 use Illuminate\Http\Request;
@@ -21,20 +22,14 @@ class ReservationController extends Controller
         return response()->json($this->reservationService->allReservations());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ReservationStoreRequest $request, int $hotel)
     {
-        //
+        $validated = $request->validated();
+        return response()->json($this->reservationService->store($validated, $hotel));
     }
 
     /**
