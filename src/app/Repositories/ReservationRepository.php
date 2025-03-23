@@ -18,10 +18,6 @@ class ReservationRepository{
         return Reservation::create($reservation);
     }
 
-    public function updateReservation(array $reservation, int $id){
-        $reservation = Reservation::findOrFail($id);
-        return $reservation->update($reservation);
-    }
 
     public function isAvailableRoom(int $room, string $checkIn, string $checkOut){
         $rooms = Reservation::where('room_id', $room)->get();
