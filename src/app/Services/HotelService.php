@@ -37,6 +37,10 @@ class HotelService{
         return $this->hotelRepository->deleteHotel($id);
     }
 
+    public function filter(array $data){
+        return $this->hotelRepository->filter($data);
+    }
+
 
 
 }

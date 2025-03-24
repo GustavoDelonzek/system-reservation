@@ -29,6 +29,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('hotels', HotelController::class);
     Route::apiResource('hotels.rooms', RoomController::class)->scoped()->except(['show', 'destroy', 'update']);
     Route::apiResource('hotels.reservations', ReservationController::class)->scoped()->except(['show', 'destroy', 'update']);
+    Route::get('filter', [HotelController::class, 'filter']);
 });
 
 Route::get('reservations/{reservation}', [ReservationController::class, 'show']);

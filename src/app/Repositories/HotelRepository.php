@@ -32,6 +32,9 @@ class HotelRepository{
         return response(status:204);
     }
 
+    public function filter(array $data){
+        return Hotel::where('location', $data['location'])->get();
+    }
 
 
 }

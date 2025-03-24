@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HotelFilterRequest;
 use App\Http\Requests\HotelStoreRequest;
 use App\Http\Requests\HotelUpdateRequest;
 use App\Models\Hotel;
@@ -60,5 +61,13 @@ class HotelController extends Controller
     public function destroy(int $hotel)
     {
         return $this->hotelService->delete($hotel);
+    }
+
+    public function filter(HotelFilterRequest $request)
+    {
+
+        $validated = $request->validated();
+
+        return response()->json($this->hotelService->filter($validated));
     }
 }
