@@ -17,7 +17,9 @@ class HotelFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'location' => $this->faker->address(),
+            'amenities' => $this->faker->randomElements(['TV', 'Internet', 'Wifi', 'Parking', 'Coffee Break', 'Pool', 'Dancing']),
         ];
     }
 }

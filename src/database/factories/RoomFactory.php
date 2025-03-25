@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Hotel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class RoomFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'hotel_id' => $this->faker->randomElement(Hotel::all()->pluck('id')->toArray()),
+            'room_type' => $this->faker->randomElement(['Single room', 'Double room', 'Twin room', 'Suite', 'Private room', 'Shared room', 'Deluxe room']),
+            'price_per_night' => $this->faker->numberBetween(100, 400),
         ];
     }
 }

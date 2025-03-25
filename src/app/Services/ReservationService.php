@@ -38,7 +38,13 @@ class ReservationService{
 
     }
 
-    public function show(int $reservation){
+    public function show(int $reservation, int $user){
+        $reservation = $this->reservationRepository->getReservationById($reservation);
+
+        if($user != $reservation->user_id){
+            throw new \Exception('User logged not match with reservation user');
+        }
+
         return $this->reservationRepository->getReservationById($reservation);
     }
 }

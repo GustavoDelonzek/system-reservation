@@ -13,8 +13,11 @@ class Hotel extends Model
     protected $fillable = [
         'name',
         'location',
-        'price_per_night',
         'amenities',
+    ];
+
+    protected $casts = [
+        'amenities' => 'array'
     ];
 
     public function rooms(): HasMany

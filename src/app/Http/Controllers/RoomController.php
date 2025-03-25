@@ -6,6 +6,7 @@ use App\Http\Requests\RoomStoreRequest;
 use App\Models\Room;
 use App\Services\RoomService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RoomController extends Controller
 {
@@ -26,7 +27,7 @@ class RoomController extends Controller
      */
     public function store(RoomStoreRequest $request, int $hotel)
     {
-        $room = $this->roomService->store($request->validated(), $hotel);
+        $room = $this->roomService->store($request->validated(), $hotel, Auth::user());
         return response()->json($room, 201);
     }
 

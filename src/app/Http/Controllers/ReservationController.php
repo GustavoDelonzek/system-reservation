@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ReservationStoreRequest;
 use App\Models\Reservation;
+use App\Models\User;
 use App\Services\ReservationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,7 @@ class ReservationController extends Controller
      */
     public function show(int $reservation)
     {
-        return response()->json($this->reservationService->show($reservation));
+        return response()->json($this->reservationService->show($reservation, Auth::id()));
     }
 
 
